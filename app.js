@@ -11,15 +11,12 @@ REDIRECT_URI = "http://127.0.0.1:8888/callback"
 
 var app = express()
 
-//Listen to Port
 app.listen("8888", () => {
     console.log("Listening to port 8888...")
 
-    //Opens Auth
     openurl.open("http://127.0.0.1:8888/login")
 })
 
-//Requests Scope
 app.get("/login", (req, res) => {
     var scope =
         "user-read-private user-read-email user-modify-playback-state user-read-playback-state streaming"
@@ -35,7 +32,6 @@ app.get("/login", (req, res) => {
     )
 })
 
-//Generate Token
 app.get("/callback", async (req, res) => {
     var code = req.query.code
 
